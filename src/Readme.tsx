@@ -33,7 +33,7 @@ Floorコンポーネントの子要素にそのページの内容を入れてく
     return (
         <Floor>
             <Box sx={{ display:"flex", flexDirection:"row", justifyContent:"center" }}>
-                <Paper sx={{width: "50%", padding:"10px", backgroundColor:"#e1eeef"}}>
+                <Paper sx={{minWidth:"400px", width: "50%", padding:"10px", backgroundColor:"#e1eeef"}}>
                     <ReactMarkdown>{content}</ReactMarkdown>
                 </Paper>
             </Box>
