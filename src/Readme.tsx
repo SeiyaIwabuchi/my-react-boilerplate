@@ -28,12 +28,18 @@ Floorコンポーネントの子要素にそのページの内容を入れてく
 また、このページはReadme.tsxに記載されている内容を表示しています。  
 作成するアプリケーションに応じて内容を変更してください。
 ちなみにMarkdownで書いています。
+
+## 沼りそうなポイント
+- ページが真っ白なんですが
+    - package.jsonのhomepageを確認してください。
+- でかでかと4040 NotFoundがでるんですが
+    - src/router.tsxのbasenameを確認してください。
 `;
 
     return (
         <Floor>
             <Box sx={{ display:"flex", flexDirection:"row", justifyContent:"center" }}>
-                <Paper sx={{width: "50%", padding:"10px", backgroundColor:"#e1eeef"}}>
+                <Paper sx={{minWidth:"300px", width: "50%", padding:"10px", backgroundColor:"#e1eeef", marginBottom:"10px"}}>
                     <ReactMarkdown>{content}</ReactMarkdown>
                 </Paper>
             </Box>

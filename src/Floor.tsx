@@ -67,7 +67,7 @@ function Floor(props: { children: JSX.Element }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            ←メニュー
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>

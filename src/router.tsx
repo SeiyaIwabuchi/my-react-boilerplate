@@ -1,10 +1,7 @@
+
 import { Box, Typography } from "@mui/material";
-import React from "react";
-import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
-  RouterProvider,
-  Route,
 } from "react-router-dom";
 import App from "./App";
 import Floor from "./Floor";
@@ -36,6 +33,6 @@ const router = createBrowserRouter([
     path: "/readme",
     element: <Readme />
   }
-]);
+],{basename:"/my-react-boilerplate/"});
 
 export default router;
