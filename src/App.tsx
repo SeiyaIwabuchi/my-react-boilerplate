@@ -1,12 +1,11 @@
-import React from 'react';
+import { Counter } from "./features/counter/Counter";
+import Floor from "./Floor";
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <Floor>
+      <header className="App App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
@@ -51,7 +50,7 @@ function App() {
           </a>
         </span>
       </header>
-    </div>
+    </Floor>
   );
 }
 
