@@ -31,7 +31,9 @@ Floorコンポーネントの子要素にそのページの内容を入れてく
 
 ## 沼りそうなポイント
 - ページが真っ白なんですが
-    - 
+    - package.jsonのhomepageを確認してください。
+- でかでかと4040 NotFoundがでるんですが
+    - src/router.tsxのbasenameを確認してください。
 `;
 
     return (
