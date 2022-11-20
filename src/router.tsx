@@ -33,6 +33,6 @@ const router = createBrowserRouter([
     path:"/readme",
     element: <Readme />
   }
-],{basename:"/seiyaiwabuchi.github.io/my-react-boilerplate/"});
+]);
 
 export default router;
