@@ -1,13 +1,24 @@
+import { Box, Button, TextField } from "@mui/material";
+import { useState } from "react";
+import { useAppDispatch } from "./app/hooks";
+import { open } from "./features/common/snackbarSlice";
 import { Counter } from "./features/counter/Counter";
 import Floor from "./Floor";
-import logo from './logo.svg';
+import logo from "./logo.svg";
 
 function App() {
+  const [snackbarText, setSnackbarText] = useState("");
+  const dispatch = useAppDispatch();
+
   return (
     <Floor>
       <header className="App App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
+        <Box sx={{marginTop:"30px", display:"flex", width:"400px", justifyContent: "space-between"}}>
+          <TextField label="Snackbar text" value={snackbarText} onChange={event => setSnackbarText(event.target.value)}/>
+          <Button variant="outlined" onClick={() => dispatch(open({message:snackbarText}))}>Test snackbar</Button>
+         </Box>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>

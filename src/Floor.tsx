@@ -4,16 +4,20 @@ import MenuIcon from "@mui/icons-material/Menu";
 import NotesIcon from '@mui/icons-material/Notes';
 import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Snackbar, Toolbar, Typography } from '@mui/material';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import './App.css';
 import Drawer_ from './Drawer_';
+import { getSnackbarState } from "./features/common/snackbarSlice";
+import { useAppDispatch, useAppSelector } from "./app/hooks";
+import { close, open } from "./features/common/snackbarSlice";
 
 function Floor(props: { children: JSX.Element }) {
 
   const [isDrawerOpen, setDrawerOpen] = useState(false);
-  const [isSbOpen, setIsSbOpen] = useState({ open: false, text: "" });
   const navigate = useNavigate();
+  const snackbarState = useAppSelector(getSnackbarState);
+  const dispatch = useAppDispatch();
 
   const list = () => (
     <Box
@@ -24,12 +28,12 @@ function Floor(props: { children: JSX.Element }) {
     >
       <List>
         {[
-          ['Top', <ArrowForwardIcon />, () => { navigate("/") }],
+          ['Top', <ArrowForwardIcon />, () => { navigate("/index") }],
           ['Readme', <NotesIcon />, () => { navigate("/readme") }],
-          ['(Inbox)', <InboxIcon />, () => { setIsSbOpen({ open: true, text: "まだ実装してないよ" }) }],
-          ['(Starred)', <MailIcon />, () => { setIsSbOpen({ open: true, text: "まだ実装してないよ" }) }],
-          ['(Send email)', <InboxIcon />, () => { setIsSbOpen({ open: true, text: "まだ実装してないよ" }) }],
-          ['(Drafts)', <MailIcon />, () => { setIsSbOpen({ open: true, text: "まだ実装してないよ" }) }]
+          ['(Inbox)', <InboxIcon />, () => { dispatch(open({ message: "まだ実装してないよ" })) }],
+          ['(Starred)', <MailIcon />, () => { dispatch(open({ message: "まだ実装してないよ" })) }],
+          ['(Send email)', <InboxIcon />, () => { dispatch(open({ message: "まだ実装してないよ" })) }],
+          ['(Drafts)', <MailIcon />, () => { dispatch(open({ message: "まだ実装してないよ" })) }]
         ].map((pair, index) => (
           <ListItem key={pair[0] as string} disablePadding>
             <ListItemButton onClick={(pair[2] as () => void)}>
@@ -76,13 +80,7 @@ function Floor(props: { children: JSX.Element }) {
         {props.children}
       </Box>
       <Drawer_ />
-      <Snackbar
-        open={isSbOpen.open}
-        autoHideDuration={6000}
-        onClose={() => setIsSbOpen({ ...isSbOpen, open: false })}
-        message={isSbOpen.text}
-
-      />
+      <Snackbar {...snackbarState} onClose={() => dispatch(close())}/>
     </Box>
   );
 }
